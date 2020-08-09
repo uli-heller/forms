@@ -27,7 +27,7 @@
 			<Actions class="submission-menu" :force-menu="true">
 				<ActionButton icon="icon-download" @click="onExportPDF">
 					{{ t('forms', 'Export as PDF') }}
-				</ActionButton> 
+				</ActionButton>
 				<ActionButton icon="icon-delete" @click="onDelete">
 					{{ t('forms', 'Delete this response') }}
 				</ActionButton>
@@ -110,7 +110,7 @@ export default {
 		onExportPDF() {
 			this.$emit('exportPDF')
 		}
-	},
+	}
 }
 </script>
 
