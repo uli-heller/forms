@@ -244,7 +244,7 @@ export default {
 				this.loadingResults = false
 			}
 		},
-		
+
 		async getSubmissionPDF(id) {
 			try {
 				await axios.get(generateUrl('/apps/forms/api/v1/submission/pdf/{id}', { id }))
