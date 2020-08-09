@@ -109,8 +109,8 @@ export default {
 		},
 		onExportPDF() {
 			this.$emit('exportPDF')
-		}
-	}
+		},
+	},
 }
 </script>
 
