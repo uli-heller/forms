@@ -111,7 +111,8 @@
 				:key="submission.id"
 				:submission="submission"
 				:questions="form.questions"
-				@delete="deleteSubmission(submission.id)" />
+				@delete="deleteSubmission(submission.id)"
+				@exportPDF="getSubmissionPDF(submission.id)" />
 		</section>
 	</AppContent>
 </template>
@@ -241,6 +242,15 @@ export default {
 				showError(t('forms', 'There was an error while removing this response'))
 			} finally {
 				this.loadingResults = false
+			}
+		},
+		
+		async getSubmissionPDF(id) {
+			try {
+				await axios.get(generateUrl('/apps/forms/api/v1/getSubmissionPDF/{id}', { id }))
+			}. catch (error) {
+				console.error(error)
+				showError(t('forms', 'There was an error while getting the PDF'))
 			}
 		},
 
