@@ -60,6 +60,6 @@ return [
 
 		['name' => 'api#insertSubmission', 'url' => '/api/v1/submission/insert', 'verb' => 'POST'],
 		['name' => 'api#deleteSubmission', 'url' => '/api/v1/submission/{id}', 'verb' => 'DELETE'],
-		['name' => 'api#getSubmissionPDF', 'url' => 'api/v1/submission/pdf/{id}', 'verb' => 'GET'],
+		['name' => 'api#getSubmissionPDF', 'url' => '/api/v1/submission/pdf/{id}', 'verb' => 'GET'],
 	]
 ];
