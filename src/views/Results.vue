@@ -247,7 +247,7 @@ export default {
 		
 		async getSubmissionPDF(id) {
 			try {
-				await axios.get(generateUrl('/apps/forms/api/v1/getSubmissionPDF/{id}', { id }))
+				await axios.get(generateUrl('/apps/forms/api/v1/submission/pdf/{id}', { id }))
 			}. catch (error) {
 				console.error(error)
 				showError(t('forms', 'There was an error while getting the PDF'))
