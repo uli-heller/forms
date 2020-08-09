@@ -115,6 +115,7 @@ class ApiController extends Controller {
 
 	/**
 	 * @NoAdminRequired
+	 * @NoCSRFRequired
 	 *
 	 * Read Form-List only with necessary information for Listing.
 	 */
