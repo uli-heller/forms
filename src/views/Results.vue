@@ -247,12 +247,10 @@ export default {
 
 		async getSubmissionPDF(id) {
 			try {
-				const response = await axios.get(generateUrl('/apps/forms/api/v1/submission/pdf/{id}', { id }, { headers: { 'Content-Type': 'application/json', Accept: 'application/pdf' } }))
+				const response = await axios.get(generateUrl('/apps/forms/api/v1/submission/pdf/{id}', { id }), { responseType: 'blob' })
 				const element = document.createElement('a')
-				const parser = new Parser({
-					delimiter: ',',
-				})
-				element.setAttribute('href', 'data:application/pdf;charset=utf-8,' + encodeURIComponent(parser.parse(response.data)))
+				const blob = new Blob([response.data], { type: 'application/pdf;charset=UTF-8' })
+				element.setAttribute('href', URL.createObjectURL(blob))
 				element.setAttribute('download', this.formTitle + ' (' + t('forms', 'responses') + ').pdf')
 				element.style.display = 'none'
 				document.body.appendChild(element)
