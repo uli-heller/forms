@@ -608,7 +608,7 @@ class ApiController extends Controller {
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
 	 */
-	public function getSubmissionsData(string $hash): Http\JSONResponse {
+	public function getSubmissions(string $hash): Http\JSONResponse {
 		try {
 			$form = $this->formMapper->findByHash($hash);
 		} catch (IMapperException $e) {
