@@ -675,12 +675,12 @@ class ApiController extends Controller {
 			$form = $this->formMapper->findByHash($hash);
 		} catch (IMapperException $e) {
 			$this->logger->debug('Could not find form');
-			return new Http\JSONResponse(['message' => 'Could not find form'], Http::STATUS_BAD_REQUEST);
+			return '';
 		}
 
 		if ($form->getOwnerId() !== $this->currentUser->getUID()) {
 			$this->logger->debug('This form is not owned by the current user');
-			return new Http\JSONResponse([], Http::STATUS_FORBIDDEN);
+			return '';
 		}
 		return $form;
 	}
