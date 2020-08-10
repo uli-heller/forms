@@ -682,7 +682,7 @@ class ApiController extends Controller {
 			$this->logger->debug('This form is not owned by the current user');
 			return new Http\JSONResponse([], Http::STATUS_FORBIDDEN);
 		}
-		return $form);
+		return $form;
 	}
 
 	/**
@@ -799,7 +799,7 @@ class ApiController extends Controller {
 		// Close and output PDF document
 		// This method has several options, check the source code documentation for more information.
 		$pdf->Output('example_001.pdf', 'I');
-			}
+	}
 
 	/**
 	 * @NoAdminRequired
