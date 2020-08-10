@@ -780,6 +780,7 @@ class ApiController extends Controller {
 // 		$html = getSubmissionData($id);
 		$html = 'test';
 
+		$pdf->AddPage();
 		// Print text using writeHTMLCell()
 		$pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
 
