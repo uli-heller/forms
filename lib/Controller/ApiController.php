@@ -670,9 +670,20 @@ class ApiController extends Controller {
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
 	 */
-// 	public function getSubmissions(string $hash): Http\JSONResponse {
-// 		return new Http\JSONResponse(getSubmissionsData($hash));
-// 	}
+	public function getSubmissionsData(string $hash) {
+		try {
+			$form = $this->formMapper->findByHash($hash);
+		} catch (IMapperException $e) {
+			$this->logger->debug('Could not find form');
+			return new Http\JSONResponse(['message' => 'Could not find form'], Http::STATUS_BAD_REQUEST);
+		}
+
+		if ($form->getOwnerId() !== $this->currentUser->getUID()) {
+			$this->logger->debug('This form is not owned by the current user');
+			return new Http\JSONResponse([], Http::STATUS_FORBIDDEN);
+		}
+		return $form);
+	}
 
 	/**
 	 * @NoAdminRequired
@@ -777,8 +788,7 @@ class ApiController extends Controller {
 		$submissionEntities = $this->submissionMapper->findById($id);
 		$pdf = new \TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 		// Set some content to print
-// 		$html = getSubmissionData($id);
-		$html = 'test';
+		$html = getSubmissionData($id);
 
 		$pdf->AddPage();
 		// Print text using writeHTMLCell()
