@@ -789,7 +789,7 @@ class ApiController extends Controller {
 		$pdf = new \TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 		// Set some content to print
 // 		$html = $this->getSubmissionsData($id);
-		$this->logger->error($submissionEntities);
+		$this->logger->error(serialize($submissionEntities));
 		$html = $submissionEntities.read();
 
 		$pdf->AddPage();
