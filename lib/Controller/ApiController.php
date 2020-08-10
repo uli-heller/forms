@@ -661,7 +661,7 @@ class ApiController extends Controller {
 		];
 
 // 		return $response;
-		return new Http\JSONResponse(getSubmissionsData($hash));
+		return new Http\JSONResponse($response);
 	}
 	
 	/**
