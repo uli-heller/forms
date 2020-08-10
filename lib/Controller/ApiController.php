@@ -51,6 +51,8 @@ use OCP\IUserManager;
 use OCP\IUserSession;
 use OCP\Security\ISecureRandom;
 
+include 'TCPDF/tcpdf.php';
+
 class ApiController extends Controller {
 	protected $appName;
 
