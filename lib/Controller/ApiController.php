@@ -607,7 +607,7 @@ class ApiController extends Controller {
 	/**
 	 * @NoAdminRequired
 	 */
-	public function getSubmissions(string $hash): Http\JSONResponse {
+	public function getSubmissionsData(string $hash) {
 		try {
 			$form = $this->formMapper->findByHash($hash);
 		} catch (IMapperException $e) {
@@ -659,7 +659,15 @@ class ApiController extends Controller {
 			'questions' => $questions,
 		];
 
-		return new Http\JSONResponse($response);
+		return $response;
+	}
+	
+	/**
+	 * @NoAdminRequired
+	 * @NoCSRFRequired
+	 */
+	public function getSubmissions(string $hash): Http\JSONResponse {
+		return new Http\JSONResponse(getSubmissionsData($hash));
 	}
 
 	/**
@@ -756,6 +764,26 @@ class ApiController extends Controller {
 
 		return new Http\JSONResponse([]);
 	}
+	
+	/**
+	 * @NoAdminRequired
+	 * @NoCSRFRequired
+	 */
+	public function getSubmissionPDF(int $id) {
+		$submissionEntities = $this->submissionMapper->findById($id);
+		$pdf = new \TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+		// Set some content to print
+		$html = getSubmissionData($id);
+
+		// Print text using writeHTMLCell()
+		$pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
+
+		// ---------------------------------------------------------
+
+		// Close and output PDF document
+		// This method has several options, check the source code documentation for more information.
+		$pdf->Output('example_001.pdf', 'I');
+			}
 
 	/**
 	 * @NoAdminRequired
