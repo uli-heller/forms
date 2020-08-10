@@ -247,7 +247,15 @@ export default {
 
 		async getSubmissionPDF(id) {
 			try {
-				await axios.get(generateUrl('/apps/forms/api/v1/submission/pdf/{id}', { id }))
+				const response = await axios.get(generateUrl('/apps/forms/api/v1/submission/pdf/{id}', { id }))
+				
+				const element = document.createElement('a')
+				element.setAttribute('href', 'data:application/pdf;charset=utf-8,' + encodeURIComponent(parser.parse(response.data)))
+				element.setAttribute('download', this.formTitle + ' (' + t('forms', 'responses') + ').pdf')
+				element.style.display = 'none'
+				document.body.appendChild(element)
+				element.click()
+				document.body.removeChild(element)
 			} catch (error) {
 				console.error(error)
 				showError(t('forms', 'There was an error while getting the PDF'))
