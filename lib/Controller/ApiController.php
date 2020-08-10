@@ -790,7 +790,7 @@ class ApiController extends Controller {
 		// Set some content to print
 // 		$html = $this->getSubmissionsData($id);
 		$this->logger->error(serialize($submissionEntities));
-		$html = $submissionEntities->formId;
+		$html = $submissionEntities->read();
 
 		$pdf->AddPage();
 		// Print text using writeHTMLCell()
