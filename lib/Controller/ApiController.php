@@ -788,7 +788,8 @@ class ApiController extends Controller {
 		$submissionEntities = $this->submissionMapper->findById($id);
 		$pdf = new \TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 		// Set some content to print
-		$html = $this->getSubmissionsData($id);
+// 		$html = $this->getSubmissionsData($id);
+		$html = $submissionEntities;
 
 		$pdf->AddPage();
 		// Print text using writeHTMLCell()
