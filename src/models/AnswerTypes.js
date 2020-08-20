@@ -24,6 +24,7 @@ import QuestionMultiple from '../components/Questions/QuestionMultiple'
 import QuestionDropdown from '../components/Questions/QuestionDropdown'
 import QuestionShort from '../components/Questions/QuestionShort'
 import QuestionLong from '../components/Questions/QuestionLong'
+import QuestionFile from '../components/Questions/QuestionFile'
 
 /**
  * @typedef {Object} AnswerTypes
@@ -103,6 +104,16 @@ export default {
 		createPlaceholder: t('forms', 'People can enter a long text'),
 		submitPlaceholder: t('forms', 'Enter a long text'),
 		warningInvalid: t('forms', 'This question needs a title!'),
+	},
+	
+	file: {
+		component: QuestionFile,
+		icon: 'clone',
+		label: 'File',
+		titlePlaceholder: 'File upload',
+		createPlaceholder: 'People can upload a file',
+		submitPlaceholder: 'Upload a file',
+		warnungInvalid: t('forms', 'This question needs a title!'),
 	},
 
 }
