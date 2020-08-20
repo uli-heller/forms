@@ -140,7 +140,7 @@ class ApiController extends Controller {
 
 	/**
 	 * @NoAdminRequired
-	 *
+	 * @NoCSRFRequired
 	 *
 	 * Read all information to edit a Form (form, questions, options, except submissions/answers).
 	 */
