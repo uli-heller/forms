@@ -105,7 +105,7 @@ export default {
 		submitPlaceholder: t('forms', 'Enter a long text'),
 		warningInvalid: t('forms', 'This question needs a title!'),
 	},
-	
+
 	file: {
 		component: QuestionFile,
 		icon: 'clone',
