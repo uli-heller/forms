@@ -53,7 +53,8 @@ class Question extends Entity {
 		'long',
 		'multiple',
 		'multiple_unique',
-		'dropdown'
+		'dropdown',
+		'file'
 	];
 
 	public function __construct() {
