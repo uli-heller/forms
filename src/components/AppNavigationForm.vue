@@ -42,12 +42,9 @@
 				@click="mobileCloseNavigation">
 				{{ t('forms', 'Responses') }}
 			</ActionRouter>
-			<!-- <ActionRouter :close-after-click="true"
-				:exact="true"
-				icon="icon-clone"
-				:to="{ name: 'clone', params: { hash: form.hash } }">
+			<ActionButton :close-after-click="true" icon="icon-clone" @click="onCloneForm">
 				{{ t('forms', 'Clone form') }}
-			</ActionRouter> -->
+			</ActionButton>
 			<ActionSeparator />
 			<ActionButton :close-after-click="true" icon="icon-delete" @click="onDeleteForm">
 				{{ t('forms', 'Delete form') }}
@@ -164,6 +161,10 @@ export default {
 		 */
 		mobileCloseNavigation() {
 			this.$emit('mobile-close-navigation')
+		},
+
+		onCloneForm() {
+			this.$emit('clone', this.form.id)
 		},
 
 		async onDeleteForm() {
